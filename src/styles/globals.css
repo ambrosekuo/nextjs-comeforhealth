@@ -24,3 +24,9 @@ a {
     background: black;
   }
 }
+
+/* Tailwind */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
