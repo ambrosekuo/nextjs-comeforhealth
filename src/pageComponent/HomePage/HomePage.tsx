@@ -1,10 +1,11 @@
 import { ReactNode, ReactElement } from "react";
-import Image from 'next/image'
-import homeImageMedium from '../../assets/homeImageMedium.jpg';
+import Image from "next/image";
+import homeImageMedium from "../../assets/homeImageMedium.jpg";
 
 type Props = {
   children: ReactNode;
-};import Redsenol from "../../assets/brandLogos/Redsenol.jpg";
+};
+import Redsenol from "../../assets/brandLogos/Redsenol.jpg";
 import AVogel from "../../assets/brandLogos/AVogel.png";
 import GardenOfLife from "../../assets/brandLogos/GardenOfLife.png";
 import Purica from "../../assets/brandLogos/Purica.png";
@@ -42,30 +43,41 @@ export const brandIcons = [
   Provita,
 ];
 
-
 export default function HomePage({ children }: Props): ReactElement {
   return (
-    <div>
-    <div className="flex w-full px-8 items-center py-2">
-      <div className="flex flex-col gap-4 items-center p-2">
-        <span className="w-full text-[30px] text-gray-800 font-bold">Guard <span className="bg-green-500 text-white px-2" > Your Heart</span></span>
-        <p className="w-full text-xs text-gray-700">Fully experience good health by providing the finest supplements, foods, and lifestyle solution.</p>
-      <div className="flex items-start w-full"> <button className="bg-green-500 px-2 py-1 text-white rounded-sm" >View Our Products</button> </div>
-      </div>
-      <div className="w-full">
-        <Image
-        src={homeImageMedium} 
-        className="rounded-2xl"
-        />
+    <div className="flex w-screen h-auto flex-col gap-5 overflow-x-hidden">
+      <div className="flex flex-col lg:flex-row w-full items-start jus px-8 py-2 lg:h-[60vh] h-[90vh] mx-auto max-w-[1280px]">
+        <div className="flex flex-col gap-4 items-center p-2 lg:h-full w-full lg:items-start justify-center pt-12">
+          <span className="text-[2.5rem] text-gray-800 font-bold">
+            Guard{" "}
+            <span className="bg-green-500 text-white px-2">Your Heart</span>
+          </span>
+          <p className="text-md text-gray-700">
+            Fully experience good health by providing the finest supplements,
+            foods, and lifestyle solution.
+          </p>
+          <div className="flex items-start">
+            <button className="bg-green-500 px-4 py-2 text-white rounded-md border border-green-600">
+              View Our Products
+            </button>
+          </div>
         </div>
-    {children}
-    </div>
-    <div className="flex animate-scroll">
-    {brandIcons.map((imgSrc) => {
-      return <div>
-        <Image src={imgSrc} layout="fixed" width={1000}  />
-        </div>})}
-</div>
+        <div className="lg:w-full h-full w-full max-w-[48rem] relative rounded-2xl mx-auto lg:h-full">
+          <Image layout="fill" objectFit="scale-down" src={homeImageMedium} />
+        </div>
+        {children}
+      </div>
+      <div className="flex relative overflow-x-hidden h-[100px]">
+        <div className="flex overflow-hidden flex-nowrap absolute top-0 gap-[20px] animate-scroll">
+          {[...brandIcons, ...brandIcons].map((imgSrc) => {
+            return (
+              <div className="h-[80px] w-[200px] relative">
+                <Image src={imgSrc} layout="fill" objectFit="scale-down" />
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 }
